@@ -3,29 +3,23 @@
 @section('content')
 
     <div class="btn-group btn-group float-right mt-3" role="group">
-        @can("viewAny", App\Models\Category::class)
-            <a href="{{ route('categories.index') }}" class="btn btn-primary" title="Show All Category">
+        @can("viewAny", App\Models\SubCategory::class)
+            <a href="{{ route('sub-categories.index') }}" class="btn btn-primary" title="Show All sub Category">
                 <span class="fa fa-list" aria-hidden="true"></span>
-            </a>
-        @endcan
-        @can("create", App\Models\Category::class)
-            <a href="{{ route('categories.create') }}" class="btn btn-success" title="Create New Category">
-                <span class="fa fa-plus" aria-hidden="true"></span>
             </a>
         @endcan
     </div>
     <p class="clearfix"></p>
-    <form method="POST" action="{{ route('categories.update', $category->id) }}">
+    <form method="POST" action="{{ route('sub-categories.store') }}" accept-charset="UTF-8">
         <div class="card card-primary card-outline">
             <div class="card-header">
                 <div class="card-title">
-                    <h4>{{ $category->title }}</h4>
+                    <h4>Create New Sub Category</h4>
                 </div>
             </div>
             <div class="card-body">
-                @csrf
-                @method("PUT")
-                @include ('categories.form', ['category' => $category])
+                @csrf()
+                @include ('sub-categories.form', ['subCategory' => null ])
             </div>
             <div class="card-footer">
                 <input class="btn btn-primary float-right" type="submit" value="Submit">
@@ -33,5 +27,6 @@
             </div>
         </div>
     </form>
-
 @endsection
+
+

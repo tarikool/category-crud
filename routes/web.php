@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LogInController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -29,8 +31,11 @@ Route::resource("permissions", PermissionsController::class, ["names" => "permis
 Route::resource("logs", LogsController::class, ["names" => "logs"])->only(["index", "show"]);
 
 //Authentication Routes
-Route::get("/login", [LogInController::class, "showLoginForm"])->name("login.show");
-Route::post("/login", [LogInController::class, "login"])->name("login.submit");
+Route::middleware('guest')->group(function () {
+    Route::get("/login", [LogInController::class, "showLoginForm"])->name("login.show");
+    Route::post("/login", [LogInController::class, "login"])->name("login.submit");
+});
+
 Route::get("/logout", [LogInController::class, "logout"])->name("logout");
 
 //settings route
@@ -48,3 +53,8 @@ Route::controller(UserProfileController::class)->group(function(){
 Route::controller(HomeController::class)->group(function(){
     Route::get("/", "index")->name("home");
 });
+
+
+Route::resource('categories', CategoryController::class);
+Route::resource('sub-categories', SubCategoryController::class);
+

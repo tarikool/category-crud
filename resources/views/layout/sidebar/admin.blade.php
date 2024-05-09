@@ -3,7 +3,7 @@
         @can("viewAny", App\Models\User::class)
             <li class="nav-item">
                 <a href="{{route("users.index")}}" class="nav-link {{ $user_menu ?? "" }}">
-                    <i class="fas fa-users"></i> 
+                    <i class="fas fa-users"></i>
                     <p>Users</p>
                 </a>
             </li>
@@ -11,15 +11,31 @@
         @can("viewAny", App\Models\Role::class)
             <li class="nav-item">
                 <a href="{{route("roles.index")}}" class="nav-link {{ $role_menu ?? "" }}">
-                    <i class="fas fa-user-plus"></i> 
+                    <i class="fas fa-user-plus"></i>
                     <p>Roles</p>
+                </a>
+            </li>
+        @endcan
+        @can("viewAny", App\Models\Category::class)
+            <li class="nav-item">
+                <a href="{{route("categories.index")}}" class="nav-link {{ $category_menu ?? "" }}">
+                    <i class="fas fa-user-plus"></i>
+                    <p>Categories</p>
+                </a>
+            </li>
+        @endcan
+        @can("viewAny", App\Models\SubCategory::class)
+            <li class="nav-item">
+                <a href="{{route("sub-categories.index")}}" class="nav-link {{ $sub_category_menu ?? "" }}">
+                    <i class="fas fa-user-plus"></i>
+                    <p>Sub Categories</p>
                 </a>
             </li>
         @endcan
         @can("viewAny", App\Models\Permission::class)
             <li class="nav-item">
                 <a href="{{route("permissions.index")}}" class="nav-link {{ $permission_menu ?? "" }}">
-                    <i class="fa fa-user-shield"></i> 
+                    <i class="fa fa-user-shield"></i>
                     <p>Permissions</p>
                 </a>
             </li>
@@ -27,7 +43,7 @@
         @can("update", App\Models\Setting::class)
             <li class="nav-item">
                 <a href="{{route("settings.show")}}" class="nav-link {{ $setting_menu ?? "" }}">
-                    <i class="fas fa-cogs"></i> 
+                    <i class="fas fa-cogs"></i>
                     <p>Settings</p>
                 </a>
             </li>
@@ -35,7 +51,7 @@
         @can("viewAny", App\Models\Log::class)
             <li class="nav-item">
                 <a href="{{route("logs.index")}}" class="nav-link {{ $log_menu ?? "" }}">
-                    <i class="fa fa-history"></i> 
+                    <i class="fa fa-history"></i>
                     <p>Logs</p>
                 </a>
             </li>
